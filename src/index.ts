@@ -8,7 +8,7 @@
 // are little-endian.
 export function base64ToPasscodes(base64: string): Uint32Array {
     return new Uint32Array(
-        new Uint8Array([...atob(base64)].map(c => c.fromCodePoint(0))).buffer
+        Uint8Array.from(atob(base64), c => c.charCodeAt(0)).buffer
     );
 }
 
